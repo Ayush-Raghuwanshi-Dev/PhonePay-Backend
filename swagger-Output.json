@@ -1,0 +1,68 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "PhonePe Backend System API",
+        "version": "1.0.0",
+        "description": "API documentation for the PhonePe Backend System"
+    },
+    "servers": [
+        {
+        "url": "http://localhost:5000",
+        "description": "Local development server"
+        }
+    ],
+    "paths": {
+        "/": {
+        "get": {
+            "summary": "Check server status",
+            "responses": {
+            "200": {
+                "description": "Server is running successfully"
+            },
+            "400": {
+                "description": "Bad request - invalid input data"
+            }
+            }
+        }
+        },
+        "/api/auth/register": {
+            "post": {
+                "summary": "Register a new user",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "body",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email",
+                        "in": "body",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "phone",
+                        "in": "body",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "body",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "User registered successfully"
+                    },
+                    "400": {
+                        "description": "Bad request - invalid input data"
+                    }
+                }
+            }
+        }
+    }
+}
