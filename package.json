@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "PhonePe clone built with Node.js, Express, and MongoDB. This project implements user authentication, payment processing, and transaction history features. It serves as a backend API for a mobile payment application.",
   "main": "server.js",
-
   "type": "module",
   "scripts": {
     "dev": "nodemon server.js",
@@ -17,11 +16,13 @@
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "express-rate-limit": "^8.3.2",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.4.1",
     "swagger-autogen": "^2.23.7",
-    "swagger-ui-express": "^5.0.1"
-  }, 
+    "swagger-ui-express": "^5.0.1",
+    "uuid": "^13.0.0"
+  },
   "devDependencies": {
     "nodemon": "^2.0.22"
   }
