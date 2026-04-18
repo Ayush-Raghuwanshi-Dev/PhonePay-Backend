@@ -20,6 +20,10 @@ try {
 // load environment variables from .env file
 dotenv.config();
 
+// Custom Middlewares
+import { errorHandler, notFound } from './src/middleware/errorHandler.js';
+import { apiLimiter } from './src/middleware/rateLimiter.js';
+
 
 // create an instance of the express application
 const app = express();
@@ -30,6 +34,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // enable CORS for all routes
 app.use(cors());
+
+// Apply rate limiting to all requests under /api
+app.use('/api', apiLimiter);
+
 // connect to the database
 connectDB();
 
@@ -50,6 +58,9 @@ const PORT = process.env.PORT || 3000;
 // use Swagger UI for API documentation
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
+// Top level error handling
+app.use(notFound);
+app.use(errorHandler);
 
 // listen function to start the server and log a message to the console when the server is running
 app.listen(PORT, () => {
